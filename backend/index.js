@@ -14,7 +14,7 @@ connectDB();
 
 // CORS Configuration
 const corsOptions = {
-    origin: process.env.APPLICATION_URL, // Frontend URL from environment
+    origin: [process.env.APPLICATION_URL,'http://localhost:3000'], // Frontend URL from environment
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']

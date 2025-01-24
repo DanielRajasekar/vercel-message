@@ -1,16 +1,14 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 
-
 const Home = () => {
-
     const [name,setName]=useState("");
     const [title,setTitle]=useState("");
     const [message,setMessage]= useState("");
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit =async (e) =>{
         e.preventDefault();
         const post = {
             Name: name,
@@ -18,20 +16,20 @@ const Home = () => {
             Message: message
         };
         try {
-            const res = await axios.post(`${process.env.REACT_APP_URL}/api/messages`, post, { withCredentials: true });
-            console.log(res);
-            setSuccess("Message data posted successfully!");
-            setError(null);
+            const response = await axios.post(`${process.env.REACT_APP_URL}/api/messages`, post, { withCredentials: true });
+            console.log(response.data);
+            setSuccess("Message sent successfully");
             setName("");
             setTitle("");
             setMessage("");
-        } catch (err) {
-            console.log(err);
-            setError("Error posting message data");
-            setSuccess(null);
+            setError(null);
+            } catch (error) {
+                setError("Error sending message");
+                setSuccess(null);
+                console.error(error);
+
         }
     }
-
   return (
     <>
     <div className="container mt-5">
@@ -84,4 +82,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Home
