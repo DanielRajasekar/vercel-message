@@ -14,11 +14,12 @@ connectDB();
 
 // CORS Configuration
 const corsOptions = {
-    origin: [process.env.APPLICATION_URL,'http://localhost:3000'], // Frontend URL from environment
+    origin: [process.env.APPLICATION_URL, 'http://localhost:3000', 'https://frontend-three-nu.vercel.app'], // Include the frontend URL
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
+
 
 app.use(cors(corsOptions));
 app.use(express.json()); // JSON body parsing
